@@ -1,37 +1,62 @@
-# Spaces
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B2B Cold Email Sender</title>
+    <style>
+        body { font-family: Tahoma, Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 20px; margin: 0; }
+        .container { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h2 { text-align: center; color: #38bdf8; margin-top: 0; }
+        label { display: block; margin-top: 15px; font-weight: bold; color: #94a3b8; }
+        input, textarea, select { width: 100%; padding: 12px; margin-top: 5px; border-radius: 8px; border: 1px solid #334155; background-color: #0f172a; color: #fff; box-sizing: border-box; font-size: 14px; }
+        button { width: 100%; padding: 14px; background-color: #2563eb; color: white; border: none; border-radius: 8px; margin-top: 20px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button:hover { background-color: #1d4ed8; }
+        .status { margin-top: 15px; padding: 12px; border-radius: 8px; display: none; text-align: center; font-weight: bold; }
+        .success { background-color: #065f46; color: #34d399; }
+        .error { background-color: #991b1b; color: #fca5a5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🚀 B2B Email Sender Engine</h2>
+        <form id="emailForm">
+            <label>مضيف SMTP (Host):</label>
+            <input type="text" id="smtpHost" placeholder="e.g. smtp.gmail.com or mail.domain.com" required>
 
-[Hugging Face Spaces](https://huggingface.co/spaces) offer a simple way to host ML demo apps directly on your profile or your organization's  profile. This allows you to create your ML portfolio, showcase your projects at conferences or to stakeholders, and work collaboratively with other people in the ML ecosystem.
+            <label>المنفذ (Port):</label>
+            <input type="number" id="smtpPort" value="587" required>
 
-We have built-in support for an awesome SDK that let you build cool apps in Python in a matter of minutes: **[Gradio](https://gradio.app/)**, but you can also unlock the whole power of Docker and host an arbitrary Dockerfile. Finally, you can create static Spaces using JavaScript and HTML.
+            <label>اسم المستخدم / البريد (Username):</label>
+            <input type="email" id="smtpUser" placeholder="your-email@domain.com" required>
 
-You'll also be able to upgrade your Space to run [on a GPU or other accelerated hardware](./spaces-gpus). ⚡️
+            <label>كلمة المرور / App Password:</label>
+            <input type="password" id="smtpPass" placeholder="******" required>
 
-## Contents
+            <hr style="border: 0.5px solid #334155; margin-top: 20px;">
 
-- [Spaces Overview](./spaces-overview)
-  - [Handling Spaces Dependencies](./spaces-dependencies)
-  - [Spaces Settings](./spaces-settings)
-  - [Using OpenCV in Spaces](./spaces-using-opencv)
-  - [Using Spaces for Organization Cards](./spaces-organization-cards)
-  - [More ways to create Spaces](./spaces-more-ways-to-create)
-  - [Managing Spaces with GitHub Actions](./spaces-github-actions)
-  - [How to Add a Space to ArXiv](./spaces-add-to-arxiv)
-- [Spaces Dev Mode](./spaces-dev-mode)
-- [Spaces GPU Upgrades](./spaces-gpus)
-- [Spaces Disk Usage & Storage](./spaces-storage)
-- [Gradio Spaces](./spaces-sdks-gradio)
-- [Docker Spaces](./spaces-sdks-docker)
-- [Static HTML Spaces](./spaces-sdks-static)
-- [Custom Python Spaces](./spaces-sdks-python)
-- [Embed your Space](./spaces-embed)
-- [Run your Space with Docker](./spaces-run-with-docker)
-- [Reference](./spaces-config-reference)
-- [Changelog](./spaces-changelog)
+            <label>إيميل المستلم (Recipient):</label>
+            <input type="email" id="toEmail" placeholder="client@company.com" required>
 
-## Contact
+            <label>عنوان الرسالة (Subject):</label>
+            <input type="text" id="subject" placeholder="B2B Business Proposal" required>
 
-Feel free to ask questions on the [forum](https://discuss.huggingface.co/c/spaces/24) if you need help with making a Space, or if you run into any other issues on the Hub.
+            <label>محتوى الرسالة (Body):</label>
+            <textarea id="body" rows="6" placeholder="اكتب نص الرسالة هنا..." required></textarea>
 
-If you're interested in infra challenges, custom demos, advanced GPUs, or something else, please reach out to us by sending an email to **website at huggingface.co**.
+            <button type="submit" id="sendBtn">إرسال الرسالة الآن 📤</button>
+        </form>
+        <div id="statusBox" class="status"></div>
+    </div>
 
-You can also tag us [on Twitter](https://twitter.com/huggingface)! 🤗
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const statusBox = document.getElementById('statusBox');
+            statusBox.style.display = 'block';
+            statusBox.className = 'status success';
+            statusBox.innerText = 'تم تسجيل بيانات الإرسال بنجاح وجاري تجهيز عملية التمرير...';
+        });
+    </script>
+</body>
+</html>
